@@ -1,0 +1,40 @@
+.course-card-container {
+    margin-bottom: 30px;
+    display: flex;
+    float: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: #FFFFFF;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    padding: 10px 15px 10px 15px;
+}
+
+.course-card-container-left {
+    float: left;
+    width: 70%;
+    padding-right: 2.5%;
+}
+.course-card-container-right {
+    float: right;
+    width: 30%;
+    padding-left: 2.5%;
+    padding-top: 3%;
+}
+
+.course-title > b {
+    font-family: 'Open Sans';
+    color: #000000;
+}
+
+.course-content > p{
+    font-family: 'Open Sans';
+    font-size: 16px;
+}
+
+.course-details {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    padding-left: 0.25%;
+    padding-bottom: 15px;
+}

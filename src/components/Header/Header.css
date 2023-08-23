@@ -1,0 +1,8 @@
+.headers {
+    display: flex;
+    justify-content: space-between;  
+    border: 1px; 
+    height: 80px;
+    box-shadow: 1px 1px 4px 0px #00000026;
+    background: #FFFFFF;
+}

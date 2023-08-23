@@ -1,0 +1,73 @@
+.course-info {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-info-name {
+    font-family: 'Open Sans';
+    font-size: 32px;
+    margin-left: 2.5%;
+}
+
+.course-info-container {
+    margin-bottom: 30px;
+    float: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: #FFFFFF;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    padding: 10px 15px 10px 15px;
+}
+
+.course-info-container-left {
+    font-family: 'Open Sans';
+    float: left;
+    width: 50%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+}
+
+.course-info-container-right {
+    font-family: 'Open Sans';
+    float: right;
+    width: 50%;
+    padding-top: 20px;
+    font-size: 16px;
+}
+
+.course-info-content {
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+.course-info-description {
+    padding-left: 20px;
+}
+
+.course-info-container-right-id {
+    padding-left: 10px;
+    padding-top: 35px;
+}
+
+.course-info-container-right-duration {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.course-info-container-right-created {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.course-info-container-right-authors {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.back-button {
+    margin-left: 86%;
+}

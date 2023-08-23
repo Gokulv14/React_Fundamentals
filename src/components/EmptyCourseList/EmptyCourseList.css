@@ -1,0 +1,28 @@
+.empty-list-content {
+    background: #F7F7F7;
+    font-size: 32px;
+    font-family: 'Open Sans';
+    color: #333E48;
+}
+
+.new-course-option {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    color: #333E48;
+    background: #F7F7F7;
+    padding-bottom: 15px;
+    word-wrap: break-word;
+}
+
+.empty-course-list {  
+    position : absolute;    
+    left     : 50%;
+    top      : 50%;
+    margin-left : -100px;
+    margin-top  : -100px; 
+    text-align: center;
+}
+
+.empty-course-wrapper {
+    height: 100vh;
+}
