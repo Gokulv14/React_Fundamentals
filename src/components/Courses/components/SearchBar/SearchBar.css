@@ -8,14 +8,13 @@
 .search-bar-filter {
     margin-left: 2.5%;
     border-radius: 4px;
+    border: 1px;
     background:white;
     display: flex;
     margin-right: 1%;
     border-radius: 4px;
-    border: 1px;
     height: 50px;
     float: left;
-    padding-right: 350px;
 }
 
 .search-bar-text {

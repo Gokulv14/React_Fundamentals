@@ -1,4 +1,5 @@
 import Button from '../../../../common/Button/Button';
+import Input from '../../../../common/Input/Input';
 import { ADD_NEW_COURSE_TEXT, SEARCH_BUTTON_TEXT } from '../../../../constants';
 import './SearchBar.css';
 
@@ -6,7 +7,7 @@ function SearchBar() {
 	return (
 		<div className='search-bar'>
 			<div className='search-bar-filter'>
-				<span className='search-bar-text'>Input text</span>
+				<Input value='Input text' />
 			</div>
 			<div className='search-button'>
 				<Button name={SEARCH_BUTTON_TEXT} onClickFn={() => {}} />
