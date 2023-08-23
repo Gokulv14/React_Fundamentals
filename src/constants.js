@@ -47,3 +47,9 @@ export const mockedAuthorsList = [
 		name: 'Valentina Larina',
 	},
 ];
+
+export const LOGOUT_BUTTON_TEXT = 'LOGOUT';
+export const SEARCH_BUTTON_TEXT = 'SEARCH';
+export const SHOW_COURSE_BUTTON_TEXT = 'SHOW_COURSE';
+export const BACK_BUTTON_TEXT = 'BACK';
+export const ADD_NEW_COURSE_TEXT = 'ADD NEW COURSE';

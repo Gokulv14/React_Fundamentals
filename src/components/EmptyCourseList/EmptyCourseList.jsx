@@ -1,4 +1,5 @@
 import Button from '../../common/Button/Button';
+import { ADD_NEW_COURSE_TEXT } from '../../constants';
 import './EmptyCourseList.css';
 
 function EmptyCourseList() {
@@ -13,7 +14,7 @@ function EmptyCourseList() {
 						Please use ’Add New Course’ button to add your first course
 					</span>
 				</div>
-				<Button name='ADD NEW COURSE' onClickFn={() => {}} />
+				<Button name={ADD_NEW_COURSE_TEXT} onClickFn={() => {}} />
 			</div>
 		</div>
 	);

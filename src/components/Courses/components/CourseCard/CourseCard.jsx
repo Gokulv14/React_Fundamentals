@@ -2,6 +2,7 @@ import './CourseCard.css';
 import Button from '../../../../common/Button/Button';
 import { handleDuration } from '../../../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
+import { SHOW_COURSE_BUTTON_TEXT } from '../../../../constants';
 
 function CourseCard(props) {
 	const getAuthorName = (authors, coursesData) => {
@@ -43,7 +44,7 @@ function CourseCard(props) {
 						</div>
 					</div>
 					<Button
-						name='SHOW COURSE'
+						name={SHOW_COURSE_BUTTON_TEXT}
 						onClickFn={() =>
 							props.handleShowCourse(props.coursesData, props.authorList)
 						}

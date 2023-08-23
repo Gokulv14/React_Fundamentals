@@ -1,4 +1,5 @@
 import Button from '../../../../common/Button/Button';
+import { ADD_NEW_COURSE_TEXT, SEARCH_BUTTON_TEXT } from '../../../../constants';
 import './SearchBar.css';
 
 function SearchBar() {
@@ -8,10 +9,10 @@ function SearchBar() {
 				<span className='search-bar-text'>Input text</span>
 			</div>
 			<div className='search-button'>
-				<Button name='SEARCH' onClickFn={() => {}} />
+				<Button name={SEARCH_BUTTON_TEXT} onClickFn={() => {}} />
 			</div>
 			<div className='add-new-course-button'>
-				<Button name='ADD NEW COURSE' onClickFn={() => {}} />
+				<Button name={ADD_NEW_COURSE_TEXT} onClickFn={() => {}} />
 			</div>
 		</div>
 	);

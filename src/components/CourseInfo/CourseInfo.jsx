@@ -2,6 +2,7 @@ import Button from '../../common/Button/Button';
 import './CourseInfo.css';
 import { handleDuration } from '../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
+import { BACK_BUTTON_TEXT } from '../../constants';
 
 function CourseInfo(props) {
 	const getAuthorName = (authors, coursesData) => {
@@ -51,7 +52,7 @@ function CourseInfo(props) {
 			</div>
 			<div className='back-button'>
 				<Button
-					name='BACK'
+					name={BACK_BUTTON_TEXT}
 					onClickFn={() =>
 						props.handleShowCourse(props.coursesData, props.authorList)
 					}
