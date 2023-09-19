@@ -3,8 +3,10 @@ import Button from '../../../../common/Button/Button';
 import { handleDuration } from '../../../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { SHOW_COURSE_BUTTON_TEXT } from '../../../../constants';
+import { Link } from 'react-router-dom';
 
 function CourseCard(props) {
+	const courseId = props.coursesData.id;
 	const getAuthorName = (authors, coursesData) => {
 		let authorName = [];
 		const authorIds = coursesData.authors.map((data) => data);
@@ -43,12 +45,14 @@ function CourseCard(props) {
 							{formatCreationDate(props.coursesData.creationDate)}
 						</div>
 					</div>
-					<Button
-						name={SHOW_COURSE_BUTTON_TEXT}
-						onClickFn={() =>
-							props.handleShowCourse(props.coursesData, props.authorList)
-						}
-					/>
+					<Link to={'/courses/' + courseId}>
+						<Button
+							name={SHOW_COURSE_BUTTON_TEXT}
+							onClickFn={() =>
+								props.handleShowCourse(props.coursesData, props.authorList)
+							}
+						/>
+					</Link>
 				</div>
 			</div>
 		</div>

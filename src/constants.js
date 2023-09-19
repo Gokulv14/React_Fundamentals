@@ -53,3 +53,7 @@ export const SEARCH_BUTTON_TEXT = 'SEARCH';
 export const SHOW_COURSE_BUTTON_TEXT = 'SHOW_COURSE';
 export const BACK_BUTTON_TEXT = 'BACK';
 export const ADD_NEW_COURSE_TEXT = 'ADD NEW COURSE';
+export const INTERNAL_SERVER_ERR = 'Internal server error';
+export const PERMISSION_ERR = `You don't have permissions to create a course. Please log in as ADMIN`;
+
+export const COURSES_BACKEND_URL = 'http://localhost:4000';

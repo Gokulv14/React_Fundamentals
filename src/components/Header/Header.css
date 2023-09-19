@@ -6,3 +6,13 @@
     box-shadow: 1px 1px 4px 0px #00000026;
     background: #FFFFFF;
 }
+
+.profile-name {
+    margin-left: auto;
+    margin-top: 25px;
+    color: #333E48;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0px;
+}
