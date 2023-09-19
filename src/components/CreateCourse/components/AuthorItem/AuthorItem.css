@@ -1,0 +1,50 @@
+.author-trash {
+    width: 9.75px;
+    height: 10.833333015441895px;
+    margin-top: 1.0833330154418945px;
+    margin-left: 1.625px;
+    background: #333E48;
+    border: 1.5px solid #333E48;
+}
+
+.title-input {
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #333E48;
+}
+
+.author-heading-left {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.author-heading-right {
+    float: right;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.author-list-empty {
+    float: right;
+}
+
+.author-list-left {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.author-empty-list {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color:  #333E48;
+}
+
+.validation-error {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #FF0000;
+}

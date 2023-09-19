@@ -2,7 +2,7 @@ import './Button.css';
 
 function Button(props) {
 	return (
-		<button className='button' onClick={() => props.onClickFn()}>
+		<button className='button' onClick={(e) => props.onClickFn(e)}>
 			{props.name}
 		</button>
 	);

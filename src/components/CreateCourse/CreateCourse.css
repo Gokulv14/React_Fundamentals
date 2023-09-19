@@ -1,0 +1,63 @@
+.create-course-component{
+    background: #F7F7F7;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans';
+}
+
+.create-course-form-name {
+    font-family: 'Open Sans';
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 10px;
+    letter-spacing: 0px;
+    color: #333E48;
+    margin-left: 250px;
+}
+
+.create-course-container {
+    width: 750px;
+    height: 85%;
+    border-radius: 4px;
+    border: 1px;
+    background: #FFFFFF;
+    border: 1px solid #CFCFCF;
+    margin: auto;
+}
+.create-course-input-list {
+    padding: 35px;
+    flex-direction: column;
+}
+
+.title-input {
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #333E48;
+}
+
+.headings-input {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.author-list {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.create-course-buttons {
+    margin-left: auto;
+    margin-right: 0;
+    padding-right: 230px;
+    justify-content: end;
+    display: flex;
+}
+
+.validation-error {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #FF0000;
+}

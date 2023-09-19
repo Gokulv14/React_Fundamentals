@@ -1,0 +1,48 @@
+.login-component{
+    background: #F7F7F7;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form {
+    width: 400px;
+    height: 75%;
+    border-radius: 4px;
+    border: 1px;
+    background: #FFFFFF;
+    border: 1px solid #CFCFCF;
+    margin: auto;
+}
+
+.login-input {
+    margin: 10% 10%;
+    padding-left: 10%;
+    padding-right: 5%;
+    font-family: 'Open Sans';
+    font-size: 16px;
+}
+
+.registration-link-input {
+    margin-top: 10px;
+}
+
+.login-form-name {
+    font-family: 'Open Sans';
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 10px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #333E48;
+}
+
+.registration-link-input > b {
+    text-align: center;
+}
+
+.test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
