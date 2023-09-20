@@ -3,6 +3,7 @@ import './CourseInfo.css';
 import { handleDuration } from '../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { BACK_BUTTON_TEXT } from '../../constants';
+import { Link } from 'react-router-dom';
 
 function CourseInfo(props) {
 	const getAuthorName = (authors, coursesData) => {
@@ -51,12 +52,14 @@ function CourseInfo(props) {
 				</div>
 			</div>
 			<div className='back-button'>
-				<Button
-					name={BACK_BUTTON_TEXT}
-					onClickFn={() =>
-						props.handleShowCourse(props.coursesData, props.authorList)
-					}
-				/>
+				<Link to={'/courses'}>
+					<Button
+						name={BACK_BUTTON_TEXT}
+						onClickFn={() =>
+							props.handleShowCourse(props.coursesData, props.authorList)
+						}
+					/>
+				</Link>
 			</div>
 		</div>
 	);

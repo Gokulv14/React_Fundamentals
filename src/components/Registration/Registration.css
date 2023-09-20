@@ -1,0 +1,42 @@
+.registration-component{
+    background: #F7F7F7;
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form {
+    width: 400px;
+    height: 80%;
+    border-radius: 4px;
+    border: 1px;
+    background: #FFFFFF;
+    border: 1px solid #CFCFCF;
+    margin: auto;
+}
+
+.registration-form-name {
+    font-family: 'Open Sans';
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 10px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #333E48;
+}
+ 
+.registration-input {
+    margin: 10% 10%;
+    padding-left: 10%;
+    padding-right: 5%;
+    font-family: 'Open Sans';
+    font-size: 16px;
+}
+
+.validation-error {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #FF0000;
+}

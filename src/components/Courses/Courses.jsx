@@ -4,6 +4,7 @@ import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
 import CourseCard from './components/CourseCard/CourseCard';
 import SearchBar from './components/SearchBar/SearchBar';
 import './Courses.css';
+import { Outlet } from 'react-router-dom';
 
 function Courses(props) {
 	const [courseInfo, setCourseInfo] = useState({
@@ -35,6 +36,7 @@ function Courses(props) {
 							/>
 						);
 					})}
+				<Outlet />
 			</div>
 		);
 	};

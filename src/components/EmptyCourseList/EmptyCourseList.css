@@ -26,3 +26,8 @@
 .empty-course-wrapper {
     height: 100vh;
 }
+
+.add-course-permissions {
+     color: #FF0000;
+     font-family: 'Open Sans'
+}
