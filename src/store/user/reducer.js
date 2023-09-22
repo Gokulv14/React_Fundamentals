@@ -1,17 +1,19 @@
 import * as types from './types.js';
 
-export const InitialUserProfile = {
+export const initialUserProfile = {
 	isAuth: false,
 	name: '',
 	email: '',
-	token: 'string',
+	token: '',
 };
-export const UserReducer = (state = InitialUserProfile, action) => {
+export const UserReducer = (state = initialUserProfile, action) => {
 	switch (action.type) {
 		case types.SAVE_USERINFO:
 			return {
-				...state,
 				isAuth: true,
+				name: action.payload.name,
+				email: action.payload.email,
+				token: action.payload.token,
 			};
 		default:
 			return state;

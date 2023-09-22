@@ -3,18 +3,18 @@ import { LOGOUT_BUTTON_TEXT } from '../../constants';
 import Logo from './components/Logo/Logo';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserData } from '../../store/selector';
 
 function Header() {
 	const isAuthenticated = localStorage.getItem('userToken');
 	const navigate = useNavigate();
+	const userInfo = useSelector(getUserData);
 	let userProfile = '';
-	if (isAuthenticated) {
-		userProfile = localStorage.getItem('userName');
-	}
+	userProfile = userInfo.name;
 
 	const handleLogout = () => {
 		localStorage.removeItem('userToken');
-		localStorage.removeItem('userName');
 		localStorage.removeItem('userRole');
 		navigate('/login');
 	};

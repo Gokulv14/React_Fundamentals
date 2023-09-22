@@ -1,15 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore } from 'redux';
 import rootReducer from './rootReducer.js';
-import { InitialUserProfile } from './user/reducer.js';
+import { initialUserProfile } from './user/reducer.js';
+import { initialCourseList } from './courses/reducer.js';
+import { initialAuthorsList } from './authors/reducer.js';
 
 const appInitialState = {
-	user: InitialUserProfile,
+	user: initialUserProfile,
+	courses: initialCourseList,
+	authors: initialAuthorsList,
 };
 
-const store = configureStore({
-	reducer: rootReducer,
-	preloadedState: appInitialState,
-});
+const store = createStore(rootReducer, appInitialState, composeWithDevTools());
 
 export default store;
