@@ -31,7 +31,7 @@ function Courses() {
 	};
 
 	useEffect(() => {
-		async function fetchAuthorsList() {
+		async function fetchCourseAndAuthorsList() {
 			try {
 				const response = await makeRequest('/authors/all');
 				const res = await response.json();
@@ -42,7 +42,7 @@ function Courses() {
 				dispatch(GET_COURSES(result.result));
 			} catch (e) {}
 		}
-		fetchAuthorsList();
+		fetchCourseAndAuthorsList();
 	}, []);
 
 	const coursesCardUI = () => {
