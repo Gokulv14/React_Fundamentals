@@ -5,19 +5,33 @@ import './SearchBar.css';
 import { Link } from 'react-router-dom';
 
 function SearchBar() {
+	const handleRoles = localStorage.getItem('userRole');
+
 	return (
 		<div className='search-bar'>
 			<div className='search-bar-filter'>
 				<Input placeholder='Input text' />
 			</div>
 			<div className='search-button'>
-				<Button name={SEARCH_BUTTON_TEXT} onClickFn={() => {}} />
+				<Button
+					className='button'
+					name={SEARCH_BUTTON_TEXT}
+					onClickFn={() => {}}
+				/>
 			</div>
-			<div className='add-new-course-button'>
-				<Link to={'/courses/add'}>
-					<Button name={ADD_NEW_COURSE_TEXT} onClickFn={() => {}} />
-				</Link>
-			</div>
+			{handleRoles ? (
+				<div className='add-new-course-button'>
+					<Link to={'/courses/add'}>
+						<Button
+							className='button'
+							name={ADD_NEW_COURSE_TEXT}
+							onClickFn={() => {}}
+						/>
+					</Link>
+				</div>
+			) : (
+				''
+			)}
 		</div>
 	);
 }

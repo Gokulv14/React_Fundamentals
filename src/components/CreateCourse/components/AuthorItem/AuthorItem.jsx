@@ -1,21 +1,24 @@
 import './AuthorItem.css';
-import { mockedAuthorsList } from '../../../../constants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Input from '../../../../common/Input/Input';
 import Button from '../../../../common/Button/Button';
-import { v4 as uuidv4 } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux';
+import { ADD_AUTHORS } from '../../../../store/authors/actions';
+import { getAuthors } from '../../../../store/selector';
+import { INTERNAL_SERVER_ERR } from '../../../../constants';
+import { makePostRequest } from '../../../../services';
 
 function AuthorItem(props) {
-	const [authorList, setAuthorList] = useState(mockedAuthorsList);
+	const dispatch = useDispatch();
+	const [authorList, setAuthorList] = useState(useSelector(getAuthors));
 	const [courseAuthorList, setCourseAuthorList] = useState([]);
 	const [authorName, setAuthorName] = useState('');
 	const [authorNameError, setAuthorNameError] = useState('');
 
 	const addAuthors = (id) => {
 		const author = authorList.find((doc) => doc.id === id);
-		setCourseAuthorList((prevState) => [...prevState, author]);
 		setAuthorList(authorList.filter((d) => d.id !== id));
-		console.log(authorList, courseAuthorList);
+		setCourseAuthorList((prevState) => [...prevState, author]);
 	};
 
 	const deleteAuthor = (id) => {
@@ -26,23 +29,33 @@ function AuthorItem(props) {
 
 	const updateAuthorName = (e) => {
 		const name = e.target.value;
-		if (name.length) setAuthorName(name);
+		setAuthorName(name);
 	};
 
-	const addNewAuthor = () => {
+	const addNewAuthor = async () => {
 		if (authorName.length < 2) {
 			setAuthorNameError('Author name length should be at least 2 characters');
 		} else {
-			const authorId = uuidv4();
-			console.log(authorId);
-			setAuthorList((prevState) => [
-				...prevState,
-				{ id: authorId, name: authorName },
-			]);
-			setAuthorName('');
-			setAuthorNameError('');
+			const payload = { name: authorName };
+			try {
+				const response = await makePostRequest(`/authors/add`, payload);
+				const res = await response.json();
+				setAuthorList((prevState) => [
+					...prevState,
+					{ id: res?.result?.id, name: authorName },
+				]);
+				dispatch(ADD_AUTHORS({ id: res?.result?.id, name: authorName }));
+				setAuthorName('');
+				setAuthorNameError('');
+			} catch (err) {
+				setAuthorNameError(INTERNAL_SERVER_ERR);
+			}
 		}
 	};
+
+	useEffect(() => {
+		props.getAuthorIds(courseAuthorList);
+	}, [courseAuthorList]);
 
 	return (
 		<div>
@@ -86,6 +99,7 @@ function AuthorItem(props) {
 				/>
 				<p className='validation-error'>{authorNameError}</p>
 				<Button
+					className='button'
 					onClickFn={(e) => {
 						addNewAuthor(e);
 					}}

@@ -1,7 +1,7 @@
 .search_bar_text {
   padding: 15px;
   font-family: "Open Sans";
-  color: #cfcfcf;
+  color: black !important;
   font-size: 16px;
   background: white;
   border-radius: 4px;
@@ -11,7 +11,7 @@
 .course_title_input {
   padding: 15px;
   font-family: "Open Sans";
-  color: #cfcfcf;
+  color: black !important;
   font-size: 16px;
   background: white;
   border-radius: 4px;
@@ -22,7 +22,7 @@
 .course_description_input {
   padding-left: 15px;
   font-family: "Open Sans";
-  color: #cfcfcf;
+  color: black !important;
   font-size: 16px;
   background: white;
   border-radius: 4px;
@@ -34,7 +34,7 @@
 .duration_input {
   padding-left: 15px;
   font-family: "Open Sans";
-  color: #cfcfcf;
+  color: black !important;
   font-size: 16px;
   background: white;
   border-radius: 4px;

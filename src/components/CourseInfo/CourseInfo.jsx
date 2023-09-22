@@ -54,6 +54,7 @@ function CourseInfo(props) {
 			<div className='back-button'>
 				<Link to={'/courses'}>
 					<Button
+						className='button'
 						name={BACK_BUTTON_TEXT}
 						onClickFn={() =>
 							props.handleShowCourse(props.coursesData, props.authorList)

@@ -107,7 +107,12 @@ function Registration() {
 							value={formValues.password}
 						/>
 						<p className='validation-error'>{formErrors.password}</p>
-						<Button type='submit' name='LOGIN' onClickFn={() => {}} />
+						<Button
+							className='button'
+							type='submit'
+							name='LOGIN'
+							onClickFn={() => {}}
+						/>
 						<p className='validation-error'>{apiErrors}</p>
 					</form>
 					<div>

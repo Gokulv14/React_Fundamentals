@@ -15,6 +15,8 @@ export const UserReducer = (state = initialUserProfile, action) => {
 				email: action.payload.email,
 				token: action.payload.token,
 			};
+		case types.RESET_USERINFO:
+			return initialUserProfile;
 		default:
 			return state;
 	}

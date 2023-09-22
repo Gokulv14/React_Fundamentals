@@ -5,11 +5,12 @@ import CourseCard from './components/CourseCard/CourseCard';
 import SearchBar from './components/SearchBar/SearchBar';
 import './Courses.css';
 import { Outlet } from 'react-router-dom';
-import { makeRequest } from '../../services';
+import { makeDeleteRequest, makeGetRequest } from '../../services';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_COURSES } from '../../store/courses/actions';
+import { DELETE_COURSES, GET_COURSES } from '../../store/courses/actions';
 import { GET_AUTHORS } from '../../store/authors/actions';
 import { getAuthors, getCourses } from '../../store/selector';
+import { INTERNAL_SERVER_ERR } from '../../constants';
 
 function Courses() {
 	const dispatch = useDispatch();
@@ -30,17 +31,24 @@ function Courses() {
 		});
 	};
 
+	const deleteCourse = async (id) => {
+		await makeDeleteRequest(`/courses/${id}`);
+		dispatch(DELETE_COURSES(id));
+	};
+
 	useEffect(() => {
 		async function fetchCourseAndAuthorsList() {
 			try {
-				const response = await makeRequest('/authors/all');
+				const response = await makeGetRequest('/authors/all');
 				const res = await response.json();
 
 				dispatch(GET_AUTHORS(res.result));
-				const resp = await makeRequest('/courses/all');
+				const resp = await makeGetRequest('/courses/all');
 				const result = await resp.json();
 				dispatch(GET_COURSES(result.result));
-			} catch (e) {}
+			} catch (e) {
+				alert(INTERNAL_SERVER_ERR);
+			}
 		}
 		fetchCourseAndAuthorsList();
 	}, []);
@@ -57,6 +65,7 @@ function Courses() {
 								coursesData={val}
 								authorList={authorsList}
 								handleShowCourse={handleShowCourseInfo}
+								deleteCourse={deleteCourse}
 							/>
 						);
 					})}
