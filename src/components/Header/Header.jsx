@@ -8,6 +8,7 @@ import { getUserData } from '../../store/selector';
 import { RESET_USERINFO } from '../../store/user/actions';
 import { RESET_AUTHORS } from '../../store/authors/actions';
 import { RESET_COURSES } from '../../store/courses/actions';
+import { makeDeleteRequest } from '../../services';
 
 function Header() {
 	const isAuthenticated = localStorage.getItem('userToken');
@@ -17,9 +18,9 @@ function Header() {
 	let userProfile = '';
 	userProfile = userInfo.name;
 
-	const handleLogout = () => {
+	const handleLogout = async () => {
+		await makeDeleteRequest(`/logout`);
 		localStorage.removeItem('userToken');
-		localStorage.removeItem('userRole');
 		dispatch(RESET_USERINFO());
 		dispatch(RESET_COURSES());
 		dispatch(RESET_AUTHORS());

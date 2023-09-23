@@ -5,6 +5,7 @@ export const initialUserProfile = {
 	name: '',
 	email: '',
 	token: '',
+	role: '',
 };
 export const UserReducer = (state = initialUserProfile, action) => {
 	switch (action.type) {
@@ -14,6 +15,7 @@ export const UserReducer = (state = initialUserProfile, action) => {
 				name: action.payload.name,
 				email: action.payload.email,
 				token: action.payload.token,
+				role: action.payload.role,
 			};
 		case types.RESET_USERINFO:
 			return initialUserProfile;

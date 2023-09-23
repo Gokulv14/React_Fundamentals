@@ -12,6 +12,9 @@ export const courseReducer = (state = initialCourseList, action) => {
 			return initialCourseList;
 		case types.DELETE_COURSES:
 			return state.filter((c) => c.id !== action.payload);
+		case types.UPDATE_COURSES:
+			const index = state.findIndex((doc) => doc.id === action.payload.id);
+			return (state[index] = action.payload);
 		default:
 			return state;
 	}

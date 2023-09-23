@@ -4,8 +4,9 @@ import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import CourseInfo from './components/CourseInfo/CourseInfo';
-import CreateCourse from './components/CreateCourse/CreateCourse';
+import CourseForm from './components/CourseForm/CourseForm';
 import { ProtectedRoute } from './helpers/protectedRoute';
+import { PrivateRoute } from './components/Private/PrivateRoute';
 
 function App() {
 	return (
@@ -40,9 +41,17 @@ function App() {
 						<Route
 							path='courses/add'
 							element={
-								<ProtectedRoute>
-									<CreateCourse />
-								</ProtectedRoute>
+								<PrivateRoute>
+									<CourseForm />
+								</PrivateRoute>
+							}
+						/>
+						<Route
+							path='courses/update/:courseId'
+							element={
+								<PrivateRoute>
+									<CourseForm />
+								</PrivateRoute>
 							}
 						/>
 						<Route path='*' element={<Navigate to='/' />} />

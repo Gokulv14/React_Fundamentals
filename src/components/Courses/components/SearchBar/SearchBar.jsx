@@ -1,11 +1,17 @@
 import Button from '../../../../common/Button/Button';
 import Input from '../../../../common/Input/Input';
-import { ADD_NEW_COURSE_TEXT, SEARCH_BUTTON_TEXT } from '../../../../constants';
+import {
+	ADD_NEW_COURSE_TEXT,
+	SEARCH_BUTTON_TEXT,
+	USER_ROLES,
+} from '../../../../constants';
 import './SearchBar.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserData } from '../../../../store/selector';
 
 function SearchBar() {
-	const handleRoles = localStorage.getItem('userRole');
+	const userInfo = useSelector(getUserData);
 
 	return (
 		<div className='search-bar'>
@@ -19,7 +25,7 @@ function SearchBar() {
 					onClickFn={() => {}}
 				/>
 			</div>
-			{handleRoles ? (
+			{userInfo.role === USER_ROLES.ADMIN ? (
 				<div className='add-new-course-button'>
 					<Link to={'/courses/add'}>
 						<Button

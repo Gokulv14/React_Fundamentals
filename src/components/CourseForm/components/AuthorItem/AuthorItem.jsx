@@ -4,14 +4,27 @@ import Input from '../../../../common/Input/Input';
 import Button from '../../../../common/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_AUTHORS } from '../../../../store/authors/actions';
-import { getAuthors } from '../../../../store/selector';
+import { getAuthors, getCourses } from '../../../../store/selector';
 import { INTERNAL_SERVER_ERR } from '../../../../constants';
 import { makePostRequest } from '../../../../services';
 
 function AuthorItem(props) {
 	const dispatch = useDispatch();
-	const [authorList, setAuthorList] = useState(useSelector(getAuthors));
-	const [courseAuthorList, setCourseAuthorList] = useState([]);
+	const authorData = useSelector(getAuthors);
+	const courseData = useSelector(getCourses);
+	const actualCourse = props.courseId
+		? courseData.length && courseData.find((d) => d.id === props.courseId)
+		: '';
+	const initialAuthorsList = actualCourse
+		? authorData.filter((e) => !actualCourse.authors.includes(e.id))
+		: authorData;
+	const initialCourseAuthorsList = actualCourse
+		? authorData.filter((e) => actualCourse.authors.includes(e.id))
+		: [];
+	const [authorList, setAuthorList] = useState(initialAuthorsList);
+	const [courseAuthorList, setCourseAuthorList] = useState(
+		initialCourseAuthorsList
+	);
 	const [authorName, setAuthorName] = useState('');
 	const [authorNameError, setAuthorNameError] = useState('');
 

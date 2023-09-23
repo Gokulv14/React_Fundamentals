@@ -1,20 +1,33 @@
-import './CreateCourse.css';
+import './CourseForm.css';
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
 import { useState } from 'react';
 import AuthorItem from './components/AuthorItem/AuthorItem';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { ADD_COURSES } from '../../store/courses/actions';
+import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentDate } from '../../helpers/formatCreationDate';
-import { makePostRequest } from '../../services';
-import { INTERNAL_SERVER_ERR } from '../../constants';
 import { handleDuration } from '../../helpers/getCourseDuration';
+import { getCourses } from '../../store/selector';
+import { updateCourses, saveCourses } from '../../store/courses/thunk';
 
-function CreateCourse() {
+function CourseForm() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const initialValues = { title: '', description: '', duration: '' };
+	const { courseId } = useParams();
+	const location = useLocation();
+
+	const coursesData = useSelector(getCourses);
+	const actualCourse =
+		location.pathname.includes('update') && courseId
+			? coursesData.length && coursesData.find((doc) => doc.id === courseId)
+			: '';
+	const initialValues = actualCourse
+		? {
+				title: actualCourse.title,
+				description: actualCourse.description,
+				duration: actualCourse.duration,
+		  }
+		: { title: '', description: '', duration: '' };
 	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
 	const [authors, setAuthors] = useState([]);
@@ -59,24 +72,15 @@ function CreateCourse() {
 				authors,
 				creationDate: getCurrentDate(),
 			};
-			saveCourses(createCoursePayload)
-				.then((data) => {
-					dispatch(ADD_COURSES(data.result));
-					navigate('/courses');
-				})
-				.catch((err) => {});
+			if (actualCourse) {
+				dispatch(updateCourses(courseId, createCoursePayload));
+				navigate('/courses');
+			} else {
+				dispatch(saveCourses(createCoursePayload));
+				navigate('/courses');
+			}
 		}
 		return errors;
-	};
-
-	const saveCourses = async (payload) => {
-		try {
-			const response = await makePostRequest(`/courses/add`, payload);
-			const res = response.json();
-			return res;
-		} catch (err) {
-			setApiError(INTERNAL_SERVER_ERR);
-		}
 	};
 
 	const getAuthorIds = (authorId) => {
@@ -103,6 +107,7 @@ function CreateCourse() {
 								name='Title'
 								id='title'
 								onChange={handleInputChange}
+								value={formValues.title}
 							/>
 							<p className='validation-error'>{formErrors.title}</p>
 						</div>
@@ -114,6 +119,7 @@ function CreateCourse() {
 								name='Description'
 								id='description'
 								onChange={handleInputChange}
+								value={formValues.description}
 							/>
 							<p className='validation-error'>{formErrors.description}</p>
 						</div>
@@ -128,6 +134,7 @@ function CreateCourse() {
 								name='Duration'
 								id='duration'
 								onChange={handleInputChange}
+								value={formValues.duration}
 							/>
 							&emsp;&emsp;
 							<span>
@@ -135,7 +142,10 @@ function CreateCourse() {
 							</span>
 							<p className='validation-error'>{formErrors.duration}</p>
 						</div>
-						<AuthorItem getAuthorIds={getAuthorIds} />
+						<AuthorItem
+							getAuthorIds={getAuthorIds}
+							courseId={courseId ? courseId : ''}
+						/>
 						<p className='api-validation-error'>{apiError}</p>
 					</div>
 				</div>
@@ -145,7 +155,7 @@ function CreateCourse() {
 					</Link>
 					<Button
 						className='button'
-						name='CREATE COURSE'
+						name={!actualCourse ? 'CREATE COURSE' : 'UPDATE COURSE'}
 						onClickFn={handleSubmit}
 					/>
 				</div>
@@ -154,4 +164,4 @@ function CreateCourse() {
 	);
 }
 
-export default CreateCourse;
+export default CourseForm;

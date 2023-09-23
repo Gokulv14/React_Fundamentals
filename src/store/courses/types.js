@@ -2,3 +2,4 @@ export const GET_COURSES = 'GET_COURSES';
 export const ADD_COURSES = 'ADD_COURSES';
 export const RESET_COURSES = 'RESET_COURSES';
 export const DELETE_COURSES = 'DELETE_COURSES';
+export const UPDATE_COURSES = 'UPDATE_COURSES';
