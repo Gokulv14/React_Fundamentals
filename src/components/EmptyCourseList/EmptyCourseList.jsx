@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import Button from '../../common/Button/Button';
-import { ADD_NEW_COURSE_TEXT, PERMISSION_ERR } from '../../constants';
+import {
+	ADD_NEW_COURSE_TEXT,
+	PERMISSION_ERR,
+	USER_ROLES,
+} from '../../constants';
 import './EmptyCourseList.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserData } from '../../store/selector';
 
 function EmptyCourseList() {
 	const navigate = useNavigate();
-	const handleRoles = localStorage.getItem('userRole');
+	const userInfo = useSelector(getUserData);
+	const handleRoles = userInfo.role;
 	const [newCourse, setNewCourse] = useState('');
 
 	const handleNewCourse = () => {
-		if (handleRoles) {
+		if (handleRoles === USER_ROLES.ADMIN) {
 			navigate('/courses/add');
 			setNewCourse('');
 		} else {

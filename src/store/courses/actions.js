@@ -18,3 +18,8 @@ export const DELETE_COURSES = (payload) => ({
 	type: types.DELETE_COURSES,
 	payload,
 });
+
+export const UPDATE_COURSES = (payload) => ({
+	type: types.UPDATE_COURSES,
+	payload,
+});
