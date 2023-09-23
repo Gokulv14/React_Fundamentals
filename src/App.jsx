@@ -3,7 +3,6 @@ import Header from './components/Header/Header';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { mockedAuthorsList, mockedCoursesList } from './constants';
 import CourseInfo from './components/CourseInfo/CourseInfo';
 import CreateCourse from './components/CreateCourse/CreateCourse';
 import { ProtectedRoute } from './helpers/protectedRoute';
@@ -25,10 +24,7 @@ function App() {
 							path='courses'
 							element={
 								<ProtectedRoute>
-									<Courses
-										coursesList={mockedCoursesList}
-										authorList={mockedAuthorsList}
-									/>
+									<Courses />
 								</ProtectedRoute>
 							}
 						>

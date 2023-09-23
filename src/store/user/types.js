@@ -1,0 +1,2 @@
+export const SAVE_USERINFO = 'SAVE_USERINFO';
+export const RESET_USERINFO = 'RESET_USERINFO';

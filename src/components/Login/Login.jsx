@@ -4,9 +4,12 @@ import Button from '../../common/Button/Button';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { INTERNAL_SERVER_ERR, COURSES_BACKEND_URL } from '../../constants';
+import { useDispatch } from 'react-redux';
+import { SAVE_USERINFO } from '../../store/user/actions';
 
 function Login() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const initialValues = { email: '', password: '' };
 	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
@@ -39,8 +42,14 @@ function Login() {
 
 			const response = await result.json();
 			if (response.successful) {
+				dispatch(
+					SAVE_USERINFO({
+						name: response.user.name,
+						token: response.result,
+						email: formValues.email,
+					})
+				);
 				localStorage.setItem('userToken', response.result);
-				localStorage.setItem('userName', response.user.name);
 				localStorage.setItem('userRole', 'admin');
 				navigate('/courses');
 			} else {
@@ -95,7 +104,12 @@ function Login() {
 							value={formValues.password}
 						/>
 						<p className='validation-error'>{formErrors.password}</p>
-						<Button type='submit' name='LOGIN' onClickFn={() => {}} />
+						<Button
+							className='button'
+							type='submit'
+							name='LOGIN'
+							onClickFn={() => {}}
+						/>
 						<p className='validation-error'>{apiErrors}</p>
 					</form>
 					<div className='registration-link-input'>

@@ -4,12 +4,21 @@ import Button from '../../common/Button/Button';
 import { useState } from 'react';
 import AuthorItem from './components/AuthorItem/AuthorItem';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { ADD_COURSES } from '../../store/courses/actions';
+import { getCurrentDate } from '../../helpers/formatCreationDate';
+import { makePostRequest } from '../../services';
+import { INTERNAL_SERVER_ERR } from '../../constants';
+import { handleDuration } from '../../helpers/getCourseDuration';
 
 function CreateCourse() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const initialValues = { title: '', description: '', duration: '' };
 	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
+	const [authors, setAuthors] = useState([]);
+	const [apiError, setApiError] = useState('');
 
 	const handleInputChange = (event) => {
 		const { id, value } = event.target;
@@ -43,10 +52,36 @@ function CreateCourse() {
 		}
 
 		if (Object.keys(errors).length === 0) {
-			navigate('/courses');
+			const createCoursePayload = {
+				title: formValues.title,
+				description: formValues.description,
+				duration: Number(formValues.duration),
+				authors,
+				creationDate: getCurrentDate(),
+			};
+			saveCourses(createCoursePayload)
+				.then((data) => {
+					dispatch(ADD_COURSES(data.result));
+					navigate('/courses');
+				})
+				.catch((err) => {});
 		}
-
 		return errors;
+	};
+
+	const saveCourses = async (payload) => {
+		try {
+			const response = await makePostRequest(`/courses/add`, payload);
+			const res = response.json();
+			return res;
+		} catch (err) {
+			setApiError(INTERNAL_SERVER_ERR);
+		}
+	};
+
+	const getAuthorIds = (authorId) => {
+		const ids = authorId.map((auth) => auth.id);
+		setAuthors(ids);
 	};
 
 	return (
@@ -96,18 +131,23 @@ function CreateCourse() {
 							/>
 							&emsp;&emsp;
 							<span>
-								<b>00:00</b> hours
+								<b>{handleDuration(formValues.duration)}</b>
 							</span>
 							<p className='validation-error'>{formErrors.duration}</p>
 						</div>
-						<AuthorItem />
+						<AuthorItem getAuthorIds={getAuthorIds} />
+						<p className='api-validation-error'>{apiError}</p>
 					</div>
 				</div>
 				<div className='create-course-buttons'>
 					<Link to={'courses'}>
-						<Button name='CANCEL' onClickFn={() => {}} />
+						<Button className='button' name='CANCEL' onClickFn={() => {}} />
 					</Link>
-					<Button name='CREATE COURSE' onClickFn={handleSubmit} />
+					<Button
+						className='button'
+						name='CREATE COURSE'
+						onClickFn={handleSubmit}
+					/>
 				</div>
 			</div>
 		</div>

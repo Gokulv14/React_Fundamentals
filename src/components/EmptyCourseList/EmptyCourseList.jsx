@@ -29,7 +29,11 @@ function EmptyCourseList() {
 						Please use ’Add New Course’ button to add your first course
 					</span>
 				</div>
-				<Button name={ADD_NEW_COURSE_TEXT} onClickFn={handleNewCourse} />
+				<Button
+					className='button'
+					name={ADD_NEW_COURSE_TEXT}
+					onClickFn={handleNewCourse}
+				/>
 				{newCourse ? <p className='add-course-permissions'>{newCourse}</p> : ''}
 			</div>
 		</div>

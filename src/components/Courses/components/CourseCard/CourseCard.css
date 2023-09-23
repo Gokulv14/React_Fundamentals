@@ -38,3 +38,10 @@
     padding-left: 0.25%;
     padding-bottom: 15px;
 }
+
+.delete-button {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: #007298;
+}

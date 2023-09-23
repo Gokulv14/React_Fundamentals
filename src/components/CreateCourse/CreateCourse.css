@@ -61,3 +61,13 @@
     letter-spacing: 0px;
     color: #FF0000;
 }
+
+.api-validation-error {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #FF0000;
+    text-align: center;
+}
+
