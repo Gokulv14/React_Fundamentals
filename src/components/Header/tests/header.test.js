@@ -4,23 +4,13 @@ import Header from '../Header';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { initialState } from '../../../test.constant';
 
 afterEach(cleanup);
 describe('Header Component', () => {
-	const initialState = {
-		user: {
-			isAuth: false,
-			name: '',
-			email: '',
-			token: '',
-			role: '',
-		},
-		courses: [],
-		authors: [],
-	};
 	const mockStore = configureStore();
 	let store;
-	it('Should Check Logo', async () => {
+	it(`Should Check Logo and user's name`, async () => {
 		store = mockStore(initialState);
 		render(
 			<Provider store={store}>
@@ -31,5 +21,6 @@ describe('Header Component', () => {
 		);
 
 		expect(screen.getByAltText('Logo')).toBeInTheDocument();
+		expect(screen.findByText('My Profile')).toBeTruthy();
 	});
 });

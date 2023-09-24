@@ -32,6 +32,7 @@ function SearchBar() {
 							className='button'
 							name={ADD_NEW_COURSE_TEXT}
 							onClickFn={() => {}}
+							id='ADD_NEW_COURSE'
 						/>
 					</Link>
 				</div>

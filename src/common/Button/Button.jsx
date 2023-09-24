@@ -11,7 +11,11 @@ function Button(props) {
 		button,
 	});
 	return (
-		<button className={inputClassName} onClick={(e) => props.onClickFn(e)}>
+		<button
+			className={inputClassName}
+			onClick={(e) => props.onClickFn(e)}
+			id={props.id}
+		>
 			{props.name}
 		</button>
 	);
