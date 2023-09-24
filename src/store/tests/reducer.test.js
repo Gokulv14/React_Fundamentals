@@ -1,10 +1,16 @@
 import { cleanup } from '@testing-library/react';
 import { initialCourseList, courseReducer } from '../courses/reducer';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
 afterEach(cleanup);
 describe('coursesReducer', () => {
 	it(`should return the initial state`, async () => {
-		expect(initialCourseList).toEqual([]);
+		const middlewares = [thunk];
+		const mockStore = configureMockStore(middlewares);
+		mockStore(initialCourseList);
+		const newState = courseReducer(undefined, {});
+		expect(newState).toEqual(initialCourseList);
 	});
 
 	it(`should handle SAVE_COURSE and returns new state`, async () => {

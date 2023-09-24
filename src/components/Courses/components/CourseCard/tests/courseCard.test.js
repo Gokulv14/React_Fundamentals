@@ -63,6 +63,9 @@ describe('CourseCard Component', () => {
 		);
 		const duration = handleDuration(initialState.courses[0].duration);
 		expect(screen.findByText(duration)).toBeTruthy();
+		const regex = /^([0-9][0-9]):[0-5][0-9] hours$/;
+		const regExTest = regex.test(duration);
+		expect(regExTest).toBeTruthy();
 	});
 
 	it(`display created date in the correct format`, async () => {
@@ -82,6 +85,9 @@ describe('CourseCard Component', () => {
 			initialState.courses[0].creationDate
 		);
 		expect(screen.findByText(creationDate)).toBeTruthy();
+		const regex = /^([1-9]|[12][0-9]|3[01])\.([1-9]|1[0-2])\.\d{4}$/;
+		const regExTest = regex.test(creationDate);
+		expect(regExTest).toBeTruthy();
 	});
 
 	it(`should display authors list`, async () => {
